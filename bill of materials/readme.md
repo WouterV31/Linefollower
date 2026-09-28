@@ -4,7 +4,7 @@
 |volgnummer|naam|omschrijving|nieuw/recup|kostprijs/stuk|aantal|subtotaal|
 |----------|----|------------|-----------|---------|------|---------|
 |         1| ESP32-C3 SuperMini |     Microcontroller     |    Nieuw       |       €4,5       |   1   |    €4,5      |
-|2| QTR-8A |     ...     |    Nieuw       |       €1,9       |   1   |    €1,9     |
+|2| QTR-8A |     Reflectiesensorarray    |    Nieuw       |       €1,9       |   1   |    €1,9     |
 |3| DRV8833 |     DC-Motoraansturing     |    Nieuw       |       €3       |   1   |    €3    |
 |4| N20 6V, ±500 RPM, metal gear |     DC-motor     |    Nieuw       |       €4,5      |   2   |    €9    |
 |5| DC-DC Step-down Buck Converter 5A - 3.3V output |     Step-down convertor      |    Nieuw       |       €3     |   1   |    €3    |
