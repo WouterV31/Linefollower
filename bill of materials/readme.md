@@ -8,7 +8,7 @@
 |3| DRV8833 |     DC-Motoraansturing     |    Nieuw       |       €3       |   1   |    €3    |
 |4| N20 6V, ±500 RPM, metal gear |     DC-motor     |    Nieuw       |       €4,5      |   2   |    €9    |
 |5| DC-DC Step-down Buck Converter 5A - 3.3V output |     Step-down convertor      |    Nieuw       |       €3     |   1   |    €3    |
-|6| 18650 Li-ion |    Batterij      |    Nieuw       |       €3     |   2   |    €9    |
+|6| 18650 Li-ion |    Batterij      |    Nieuw       |       €3     |   2   |    €6    |
 |7| 18650 Batterijhouder met Losse Draden |    Batterij houder in serie      |    Nieuw       |       €1,5     |   1   |    €1,5    |
 |8| 24C256 |    EEPROM geheugen     |    Nieuw       |       €4,5    |   1   |    €4,5    |
 |9| Drukknop |    Drukknop     |    recup       |       /    |   1   |    /    |
