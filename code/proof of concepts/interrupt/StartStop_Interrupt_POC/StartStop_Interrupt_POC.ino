@@ -1,42 +1,56 @@
-// start/stop interrupt proof of concept
-// drukknop KEY1 tussen GPIO7 en GND (zie schema), interne pull-up
+const int knop = 11;
 
-const int knop = 7;                       // GPIO7 volgens elektrisch schema
-const unsigned long debounceTijd = 200;   // ms: drukken binnen deze tijd worden genegeerd (contactdender)
+volatile bool knopFlag = false;
+volatile unsigned long flankTijd = 0;
 
-volatile bool run = false;                // false = STOP, true = RUN
-volatile unsigned long laatsteDruk = 0;   // tijdstip (ms) van de laatst aanvaarde druk
-volatile unsigned int aantalInterrupts = 0;  // alle dalende flanken, ook dender
-volatile unsigned int aantalDrukken = 0;     // enkel de aanvaarde drukken
+bool run = false;
+bool vergrendeld = false;
+unsigned long losSinds = 0;
+unsigned long laatstePrint = 0;
 
-void IRAM_ATTR knopISR()
-{
-  unsigned long nu = millis();
-  aantalInterrupts++;
-  if (nu - laatsteDruk >= debounceTijd)
-  {
-    laatsteDruk = nu;
-    aantalDrukken++;
-    run = !run;
+const unsigned long debounceTijd = 30;   // ms
+const unsigned long losTijd = 50;        // ms stabiel los
+
+void IRAM_ATTR knopISR() {
+  if (!knopFlag) {
+    knopFlag = true;
+    flankTijd = millis();
   }
 }
 
-void setup()
-{
-  Serial.begin(115200);
+void setup() {
   pinMode(knop, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(knop), knopISR, FALLING);
-  Serial.println("Robot ingeschakeld");
+  Serial.begin(115200);
   Serial.println("Status = STOP");
 }
 
-void loop()
-{
-  // de delay simuleert code die bezig is: de interrupt wordt toch onmiddellijk verwerkt
-  Serial.print(run ? "RUN " : "STOP");
-  Serial.print("  drukken: ");
-  Serial.print(aantalDrukken);
-  Serial.print("  interrupts: ");
-  Serial.println(aantalInterrupts);
-  delay(1000);
+void loop() {
+  bool laag = (digitalRead(knop) == LOW);
+
+  if (vergrendeld) {
+    // wacht tot de knop stabiel losgelaten is
+    if (laag) {
+      losSinds = 0;
+    } else if (losSinds == 0) {
+      losSinds = millis();
+    } else if (millis() - losSinds >= losTijd) {
+      vergrendeld = false;
+      knopFlag = false;
+      losSinds = 0;
+    }
+  } else if (knopFlag && millis() - flankTijd >= debounceTijd) {
+    knopFlag = false;
+    if (laag) {                       // echt ingedrukt, geen storing
+      run = !run;
+      vergrendeld = true;
+      losSinds = 0;
+      Serial.println(run ? "RUN" : "STOP");
+    }
+  }
+
+  if (millis() - laatstePrint >= 1000) {
+    laatstePrint = millis();
+    Serial.println(run ? "status: RUN" : "status: STOP");
+  }
 }

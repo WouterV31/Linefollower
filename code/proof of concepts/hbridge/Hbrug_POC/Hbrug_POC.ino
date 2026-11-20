@@ -1,7 +1,7 @@
-const int IN1 = 4;
-const int IN2 = 3;
-const int IN3 = 2;
-const int IN4 = 1;
+const int IN1 = 13;
+const int IN2 = 12;
+const int IN3 = 4; 
+const int IN4 = 3; 
 
 void setup() {
   pinMode(IN1, OUTPUT);
