@@ -5,7 +5,10 @@
   Leest de 8 sensoren onafhankelijk uit (ruwe ADC-waarde, 12 bit: 0 - 4095)
   en houdt per sensor de minimum- en maximumwaarde bij.
   Wifi (access point) kan aan/uit gezet worden om te testen of de metingen
-  met wifi aan nog kloppen (ADC2-pinnen GPIO11..20 delen de ADC met wifi).
+  met wifi aan nog kloppen. Alle sensoren zitten op ADC1 (GPIO1..10):
+  ADC2 (GPIO11..20) wordt gedeeld met wifi en geeft dan foute waarden.
+  Per uitgang een weerstand van 100 kOhm naar GND, zodat zwart onder de
+  bovengrens van de ADC blijft (anders 4095).
 
   Commando's via de seriele monitor (115200 baud):
     w  wifi access point aan/uit
@@ -13,20 +16,20 @@
     s  tabel met min/max per sensor tonen
 
   Aansluitingen:
-  D1 -> GPIO8    (ADC1)
-  D2 -> GPIO9    (ADC1)
-  D3 -> GPIO10   (ADC1)
-  D4 -> GPIO11   (ADC2)
-  D5 -> GPIO12   (ADC2)
-  D6 -> GPIO13   (ADC2)
-  D7 -> GPIO1    (ADC1)
-  D8 -> GPIO2    (ADC1)
+  D1 -> GPIO1
+  D2 -> GPIO2
+  D3 -> GPIO5
+  D4 -> GPIO6
+  D5 -> GPIO7
+  D6 -> GPIO8
+  D7 -> GPIO9
+  D8 -> GPIO10
 */
 
 #include <WiFi.h>
 
 const int aantalSensoren = 8;
-const int sensor[aantalSensoren] = {8, 9, 10, 11, 12, 13, 1, 2};
+const int sensor[aantalSensoren] = {1, 2, 5, 6, 7, 8, 9, 10};
 
 int minimum[aantalSensoren];
 int maximum[aantalSensoren];
