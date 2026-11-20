@@ -3,15 +3,15 @@
 Elektronisch schema van de plan B opstelling, getekend in EasyEDA.
 
 * [elektrisch schema line follower.pdf](elektrisch%20schema%20line%20follower.pdf)
-* origineel EasyEDA-bestand: *(nog toe te voegen)*
+* origineel EasyEDA-bestand (EasyEDA Pro): [elektrisch schema line follower.epro2](elektrisch%20schema%20line%20follower.epro2)
 
 ### pintoewijzing ESP32-S3 SuperMini
 
 | ESP32-pin | aangesloten op | functie |
 |---|---|---|
 | GPIO1, 2, 5, 6, 7, 8, 9, 10 | QTR-8A D1 … D8 | sensoren (allemaal ADC1, werkt ook met wifi aan) |
-| TX (GPIO43) | EEPROM SDA | I2C data |
-| RX (GPIO44) | EEPROM SCL | I2C klok |
+| RX (GPIO44) | EEPROM SDA | I2C data |
+| TX (GPIO43) | EEPROM SCL | I2C klok (`Wire.begin(44, 43)`) |
 | GPIO13 | DRV8833 IN1 | motor M1 |
 | GPIO12 | DRV8833 IN2 | motor M1 |
 | GPIO4 | DRV8833 IN3 | motor M2 |

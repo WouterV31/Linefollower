@@ -7,7 +7,7 @@ minimale hard- en software die aantoont dat minimaal 6 sensoren onafhankelijk va
 * QTR-8A (8 analoge IR-reflectiesensoren)
 
 ### schema
-[schema sensor.pdf](schema%20sensor.pdf)
+[schema sensor.pdf](schema%20sensor.pdf) · origineel EasyEDA-bestand: [schema sensor.epro2](schema%20sensor.epro2)
 
 ### aansluitingen
 | QTR-8A | ESP32-S3 | ADC |

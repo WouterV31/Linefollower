@@ -31,7 +31,7 @@ kostprijs: €50,85 (zie [bill of materials](bill%20of%20materials/))
 | onderdeel | status |
 |-----------|--------|
 | bill of materials | klaar |
-| elektronisch schema (plan B) | klaar, definitieve pintoewijzing (EasyEDA-bronbestand nog toe te voegen) |
+| elektronisch schema (plan B) | klaar, definitieve pintoewijzing (PDF + EasyEDA-bronbestand) |
 | proof of concepts | code en uitleg klaar, testen op hardware lopen nog |
 | basisprogramma | compileert, nog te testen op de robot |
 | finale code | compileert, nog te testen en te tunen op de robot |
